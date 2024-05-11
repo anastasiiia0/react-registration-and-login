@@ -6,6 +6,7 @@ import { PrivateRoute } from '../PrivateRoute/PrivateRoute.jsx';
 import { RestrictedRoute } from '../RestrictedRoute/RestrictedRoute.jsx';
 import { refreshUser } from '../../redux/auth/operations.js';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
+import { Toaster } from 'react-hot-toast';
 
 const RegistrationPage = lazy(() =>
   import('../../pages/RegistrationPage/RegistrationPage.jsx')
@@ -27,31 +28,37 @@ export default function App() {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegistrationPage />}
-            />
-          }
-        ></Route>
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        ></Route>
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-          }
-        ></Route>
-      </Routes>
-    </Layout>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegistrationPage />}
+              />
+            }
+          ></Route>
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          ></Route>
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          ></Route>
+        </Routes>
+      </Layout>
+      <Toaster />
+    </>
   );
 }
