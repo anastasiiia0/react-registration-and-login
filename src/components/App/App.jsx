@@ -18,7 +18,7 @@ const ContactsPage = lazy(() =>
 
 export default function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -34,7 +34,7 @@ export default function App() {
           path="/register"
           element={
             <RestrictedRoute
-              redirectTo="/tasks"
+              redirectTo="/contacts"
               component={<RegistrationPage />}
             />
           }

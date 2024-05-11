@@ -82,7 +82,7 @@ export default function RegistrationForm() {
         </div>
 
         <div className={css.formInputContainer}>
-          <label htmlFor={nameFieldId} className={css.formLabel}>
+          <label htmlFor={passwordFieldId} className={css.formLabel}>
             Password
           </label>
           <Field
