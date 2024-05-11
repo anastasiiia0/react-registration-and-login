@@ -1,6 +1,6 @@
-import css from './DeleteContact.module.css';
+import css from './DeleteContactModal.module.css';
 
-export default function DeleteContact({ handleDelete }) {
+export default function DeleteContactModal({ handleDelete }) {
   return (
     <>
       <h3 className={css.modalText}>Сonfirm to delete</h3>

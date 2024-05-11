@@ -1,5 +1,5 @@
 import css from './Contact.module.css';
-// import Typography from '@mui/material/Typography';
+import { toast, Toaster } from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import { FaPhone } from 'react-icons/fa6';
 import { MdDeleteForever } from 'react-icons/md';
@@ -9,17 +9,18 @@ import { useDispatch } from 'react-redux';
 import { deleteContact, editContact } from '../../redux/contacts/operations';
 
 import ModalWindow from '../ModalWindow/ModalWindow';
-import DeleteContact from '../DeleteContact/DeleteContact';
+import DeleteContactModal from '../DeleteContactModal/DeleteContactModal';
 import EditContactForm from '../EditContactForm/EditContactForm';
 
 export default function Contact({ contact: { id, name, number } }) {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  
+
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteContact(id));
+    toast.success('Contact successfully deleted :)');
   };
 
   const handleEdit = (username, tel) => {
@@ -68,7 +69,7 @@ export default function Contact({ contact: { id, name, number } }) {
           modalOpen={deleteModalOpen}
           handleClose={() => setDeleteModalOpen(false)}
         >
-          <DeleteContact handleDelete={handleDelete} />
+          <DeleteContactModal handleDelete={handleDelete} />
         </ModalWindow>
       )}
 
@@ -83,6 +84,8 @@ export default function Contact({ contact: { id, name, number } }) {
           />
         </ModalWindow>
       )}
+
+      <Toaster />
     </>
   );
 }
