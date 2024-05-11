@@ -11,8 +11,9 @@ const formSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required'),
   tel: Yup.string()
+    .matches(/^\d+$/, 'Phone number can only contain digits')
     .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
+    .max(20, 'Too Long!')
     .required('Required'),
 });
 

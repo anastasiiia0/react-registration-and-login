@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import ContactList from '../../components/ContactList/ContactList';
 import ContactForm from '../../components/ContactForm/ContactForm';
+import SearchBox from '../../components/SearchBox/SearchBox';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { selectLoading } from '../../redux/contacts/selectors';
 
@@ -18,6 +19,7 @@ export default function TasksPage() {
     <>
       <DocumentTitle>Your tasks</DocumentTitle>
       <ContactForm />
+      <SearchBox />
       <div>{isLoading && 'Request in progress...'}</div>
       <ContactList />
     </>

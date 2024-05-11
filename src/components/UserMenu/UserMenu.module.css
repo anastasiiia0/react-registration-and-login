@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.usernameGreeting {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.username {
+  color: #e84a5f;
+}
+
+.logoutBtn {
+  background-color: rgb(59, 145, 230);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 15px;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus {
+  background-color: rgb(52, 131, 210);
+}

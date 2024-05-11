@@ -7,13 +7,14 @@ import * as Yup from 'yup';
 
 const formSchema = Yup.object().shape({
   username: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .matches(/^[a-zA-Z\s]+$/, 'Name can only contain letters and spaces')
+    .min(2, 'Name must be at least 2 characters long')
+    .max(50, 'Name cannot be longer than 50 characters')
+    .required('Name is required'),
   email: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .email('Invalid email address')
+    .required('Email is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 const initialValues = {
@@ -86,7 +87,7 @@ export default function RegistrationForm() {
             Password
           </label>
           <Field
-            type="text"
+            type="password"
             name="password"
             id={passwordFieldId}
             className={css.formInput}

@@ -6,10 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const formSchema = Yup.object().shape({
-  email: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+  email: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
 });
 
 const initialValues = {
@@ -62,7 +60,7 @@ export default function LoginForm() {
             Password
           </label>
           <Field
-            type="text"
+            type="password"
             name="password"
             id={passwordFieldId}
             className={css.formInput}
