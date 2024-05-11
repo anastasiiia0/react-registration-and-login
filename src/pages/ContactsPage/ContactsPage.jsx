@@ -17,7 +17,7 @@ export default function TasksPage() {
 
   return (
     <>
-      <DocumentTitle>Your tasks</DocumentTitle>
+      <DocumentTitle>Your contacts</DocumentTitle>
       <ContactForm />
       <SearchBox />
       <div>{isLoading && 'Request in progress...'}</div>
