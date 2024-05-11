@@ -1,18 +1,35 @@
 import css from './Contact.module.css';
+// import Typography from '@mui/material/Typography';
 import { FaUser } from 'react-icons/fa';
 import { FaPhone } from 'react-icons/fa6';
 import { MdDeleteForever } from 'react-icons/md';
 import { LiaEditSolid } from 'react-icons/lia';
 import { useState } from 'react';
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import { useDispatch } from 'react-redux';
+import { deleteContact, editContact } from '../../redux/contacts/operations';
+
+import ModalWindow from '../ModalWindow/ModalWindow';
+import DeleteContact from '../DeleteContact/DeleteContact';
+import EditContactForm from '../EditContactForm/EditContactForm';
 
 export default function Contact({ contact: { id, name, number } }) {
-  const [modalOpen, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  
+  const dispatch = useDispatch();
 
-  const handleOpenModal = () => {
-    handleOpen();
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+  };
+
+  const handleEdit = (username, tel) => {
+    dispatch(
+      editContact({
+        contactId: id,
+        name: username,
+        number: tel,
+      })
+    );
   };
 
   return (
@@ -32,25 +49,39 @@ export default function Contact({ contact: { id, name, number } }) {
           <button
             type="button"
             className={css.actionBtn}
-            // onClick={}
+            onClick={() => setEditModalOpen(true)}
           >
             <LiaEditSolid className={css.actionIcon} />
           </button>
           <button
             type="button"
             className={css.actionBtn}
-            onClick={handleOpenModal}
+            onClick={() => setDeleteModalOpen(true)}
           >
             <MdDeleteForever className={css.actionIcon} />
           </button>
         </div>
       </div>
-      {modalOpen && (
-        <ConfirmationModal
-          modalOpen={modalOpen}
-          handleClose={handleClose}
-          idToDelete={id}
-        />
+
+      {deleteModalOpen && (
+        <ModalWindow
+          modalOpen={deleteModalOpen}
+          handleClose={() => setDeleteModalOpen(false)}
+        >
+          <DeleteContact handleDelete={handleDelete} />
+        </ModalWindow>
+      )}
+
+      {editModalOpen && (
+        <ModalWindow
+          modalOpen={editModalOpen}
+          handleClose={() => setEditModalOpen(false)}
+        >
+          <EditContactForm
+            handleEdit={handleEdit}
+            handleClose={() => setEditModalOpen(false)}
+          />
+        </ModalWindow>
       )}
     </>
   );

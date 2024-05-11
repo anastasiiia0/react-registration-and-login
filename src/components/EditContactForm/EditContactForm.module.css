@@ -1,11 +1,8 @@
 .form {
   box-sizing: border-box;
-  width: 500px;
-  padding: 25px;
-  border: 3px solid #6d6d6d;
+  width: 400px;
   border-radius: 5px;
   margin: 0 auto;
-  margin-bottom: 40px;
 }
 
 .formInputContainer {
@@ -33,7 +30,39 @@
 }
 
 .formSubmitBtn {
-  padding: 12px 20px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 15px;
+  border: 3px solid #6d6d6d;
+  border-radius: 3px;
+  background-color: #e5e8e5;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  margin-top: 15px;
+}
+
+.formSubmitBtn:hover {
+  background-color: #d9d9d9;
+}
+
+.formInputError {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  font-size: 12px;
+  color: red;
+}
+
+.contactIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  color: #e84a5f;
+}
+
+.modalBtn {
+  padding: 8px 20px;
   display: block;
   margin: 0 auto;
   margin-top: 20px;
@@ -45,14 +74,6 @@
   font-weight: 500;
 }
 
-.formSubmitBtn:hover {
+.modalBtn:hover {
   background-color: #de4357;
-}
-
-.formInputError {
-  position: absolute;
-  left: 0;
-  bottom: 5px;
-  font-size: 12px;
-  color: red;
 }

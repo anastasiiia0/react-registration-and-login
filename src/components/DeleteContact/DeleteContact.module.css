@@ -1,0 +1,18 @@
+.modalText {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.modalBtn {
+  padding: 8px 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: #e84a5f;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
